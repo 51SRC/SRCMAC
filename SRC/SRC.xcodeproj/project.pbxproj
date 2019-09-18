@@ -1,0 +1,391 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		550F7786233279F4001AF2F8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F7785233279F4001AF2F8 /* AppDelegate.m */; };
+		550F7789233279F4001AF2F8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F7788233279F4001AF2F8 /* ViewController.m */; };
+		550F778B233279F5001AF2F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550F778A233279F5001AF2F8 /* Assets.xcassets */; };
+		550F778E233279F5001AF2F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550F778C233279F5001AF2F8 /* Main.storyboard */; };
+		550F7791233279F5001AF2F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F7790233279F5001AF2F8 /* main.m */; };
+		550F77A523327A34001AF2F8 /* ORSSerialPacketDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */; };
+		550F77A623327A34001AF2F8 /* DecodeBytesCharsets.c in Sources */ = {isa = PBXBuildFile; fileRef = 550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */; };
+		550F77A723327A34001AF2F8 /* ORSSerialBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */; };
+		550F77A823327A34001AF2F8 /* ORSSerialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779D23327A34001AF2F8 /* ORSSerialRequest.m */; };
+		550F77A923327A34001AF2F8 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */; };
+		550F77AA23327A34001AF2F8 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779F23327A34001AF2F8 /* ORSSerialPort.m */; };
+		550F77B223327B56001AF2F8 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F77AE23327B55001AF2F8 /* MainWindow.m */; };
+		550F77B323327B56001AF2F8 /* NSMyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F77AF23327B55001AF2F8 /* NSMyWindowController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		550F7781233279F4001AF2F8 /* SRC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SRC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		550F7784233279F4001AF2F8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		550F7785233279F4001AF2F8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		550F7787233279F4001AF2F8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		550F7788233279F4001AF2F8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		550F778A233279F5001AF2F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		550F778D233279F5001AF2F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		550F778F233279F5001AF2F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		550F7790233279F5001AF2F8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		550F7792233279F5001AF2F8 /* SRC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SRC.entitlements; sourceTree = "<group>"; };
+		550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPacketDescriptor.m; sourceTree = "<group>"; };
+		550F779A23327A34001AF2F8 /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
+		550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DecodeBytesCharsets.c; sourceTree = "<group>"; };
+		550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialBuffer.m; sourceTree = "<group>"; };
+		550F779D23327A34001AF2F8 /* ORSSerialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialRequest.m; sourceTree = "<group>"; };
+		550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
+		550F779F23327A34001AF2F8 /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
+		550F77A023327A34001AF2F8 /* ORSSerialPacketDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPacketDescriptor.h; sourceTree = "<group>"; };
+		550F77A123327A34001AF2F8 /* ORSSerialBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialBuffer.h; sourceTree = "<group>"; };
+		550F77A223327A34001AF2F8 /* DecodeBytesCharsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecodeBytesCharsets.h; sourceTree = "<group>"; };
+		550F77A323327A34001AF2F8 /* ORSSerialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialRequest.h; sourceTree = "<group>"; };
+		550F77A423327A34001AF2F8 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
+		550F77AE23327B55001AF2F8 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		550F77AF23327B55001AF2F8 /* NSMyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMyWindowController.m; sourceTree = "<group>"; };
+		550F77B023327B56001AF2F8 /* NSMyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMyWindowController.h; sourceTree = "<group>"; };
+		550F77B123327B56001AF2F8 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		550F777E233279F4001AF2F8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		550F7778233279F4001AF2F8 = {
+			isa = PBXGroup;
+			children = (
+				550F7783233279F4001AF2F8 /* SRC */,
+				550F7782233279F4001AF2F8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		550F7782233279F4001AF2F8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				550F7781233279F4001AF2F8 /* SRC.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		550F7783233279F4001AF2F8 /* SRC */ = {
+			isa = PBXGroup;
+			children = (
+				550F7784233279F4001AF2F8 /* AppDelegate.h */,
+				550F7785233279F4001AF2F8 /* AppDelegate.m */,
+				550F77B023327B56001AF2F8 /* NSMyWindowController.h */,
+				550F77AF23327B55001AF2F8 /* NSMyWindowController.m */,
+				550F77B123327B56001AF2F8 /* MainWindow.h */,
+				550F77AE23327B55001AF2F8 /* MainWindow.m */,
+				550F7787233279F4001AF2F8 /* ViewController.h */,
+				550F7788233279F4001AF2F8 /* ViewController.m */,
+				550F778C233279F5001AF2F8 /* Main.storyboard */,
+				550F779823327A34001AF2F8 /* Source */,
+				550F778A233279F5001AF2F8 /* Assets.xcassets */,
+				550F778F233279F5001AF2F8 /* Info.plist */,
+				550F7790233279F5001AF2F8 /* main.m */,
+				550F7792233279F5001AF2F8 /* SRC.entitlements */,
+			);
+			path = SRC;
+			sourceTree = "<group>";
+		};
+		550F779823327A34001AF2F8 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */,
+				550F779A23327A34001AF2F8 /* ORSSerialPort.h */,
+				550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */,
+				550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */,
+				550F779D23327A34001AF2F8 /* ORSSerialRequest.m */,
+				550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */,
+				550F779F23327A34001AF2F8 /* ORSSerialPort.m */,
+				550F77A023327A34001AF2F8 /* ORSSerialPacketDescriptor.h */,
+				550F77A123327A34001AF2F8 /* ORSSerialBuffer.h */,
+				550F77A223327A34001AF2F8 /* DecodeBytesCharsets.h */,
+				550F77A323327A34001AF2F8 /* ORSSerialRequest.h */,
+				550F77A423327A34001AF2F8 /* ORSSerialPortManager.h */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		550F7780233279F4001AF2F8 /* SRC */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 550F7795233279F5001AF2F8 /* Build configuration list for PBXNativeTarget "SRC" */;
+			buildPhases = (
+				550F777D233279F4001AF2F8 /* Sources */,
+				550F777E233279F4001AF2F8 /* Frameworks */,
+				550F777F233279F4001AF2F8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SRC;
+			productName = SRC;
+			productReference = 550F7781233279F4001AF2F8 /* SRC.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		550F7779233279F4001AF2F8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = TianYuan;
+				TargetAttributes = {
+					550F7780233279F4001AF2F8 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 550F777C233279F4001AF2F8 /* Build configuration list for PBXProject "SRC" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 550F7778233279F4001AF2F8;
+			productRefGroup = 550F7782233279F4001AF2F8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				550F7780233279F4001AF2F8 /* SRC */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		550F777F233279F4001AF2F8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550F778B233279F5001AF2F8 /* Assets.xcassets in Resources */,
+				550F778E233279F5001AF2F8 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		550F777D233279F4001AF2F8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				550F7789233279F4001AF2F8 /* ViewController.m in Sources */,
+				550F77A523327A34001AF2F8 /* ORSSerialPacketDescriptor.m in Sources */,
+				550F77A823327A34001AF2F8 /* ORSSerialRequest.m in Sources */,
+				550F77A723327A34001AF2F8 /* ORSSerialBuffer.m in Sources */,
+				550F77B223327B56001AF2F8 /* MainWindow.m in Sources */,
+				550F7791233279F5001AF2F8 /* main.m in Sources */,
+				550F77A923327A34001AF2F8 /* ORSSerialPortManager.m in Sources */,
+				550F77B323327B56001AF2F8 /* NSMyWindowController.m in Sources */,
+				550F77AA23327A34001AF2F8 /* ORSSerialPort.m in Sources */,
+				550F77A623327A34001AF2F8 /* DecodeBytesCharsets.c in Sources */,
+				550F7786233279F4001AF2F8 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		550F778C233279F5001AF2F8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				550F778D233279F5001AF2F8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		550F7793233279F5001AF2F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		550F7794233279F5001AF2F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		550F7796233279F5001AF2F8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SRC/SRC.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y9Y7YACU74;
+				INFOPLIST_FILE = SRC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guntertien.srcmac.SRC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		550F7797233279F5001AF2F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = SRC/SRC.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = Y9Y7YACU74;
+				INFOPLIST_FILE = SRC/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = com.guntertien.srcmac.SRC;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		550F777C233279F4001AF2F8 /* Build configuration list for PBXProject "SRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				550F7793233279F5001AF2F8 /* Debug */,
+				550F7794233279F5001AF2F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		550F7795233279F5001AF2F8 /* Build configuration list for PBXNativeTarget "SRC" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				550F7796233279F5001AF2F8 /* Debug */,
+				550F7797233279F5001AF2F8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 550F7779233279F4001AF2F8 /* Project object */;
+}
