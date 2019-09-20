@@ -1,9 +1,9 @@
 //
 //  AppDelegate.m
-//  RS232 Tool
+//  SRC
 //
-//  Created by zbh on 17/3/3.
-//  Copyright © 2017年 zbh. All rights reserved.
+//  Created by TianYuan on 2019/9/18.
+//  Copyright © 2019 TianYuan. All rights reserved.
 //
 
 #import "AppDelegate.h"

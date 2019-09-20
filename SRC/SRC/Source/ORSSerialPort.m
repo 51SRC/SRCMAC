@@ -180,7 +180,7 @@ static __strong NSMutableArray *allSerialPorts;
 		self.packetDescriptorsAndBuffers = [NSMapTable mapTableWithStrongToStrongObjects]; // Deprecated in 10.8.
 #endif
 		self.requestsQueue = [NSMutableArray array];
-		self.baudRate = @B9600;
+		self.baudRate = @B115200;
 		self.allowsNonStandardBaudRates = NO;
 		self.numberOfStopBits = 0;// 【0-1】==【1-2】停止位
         self.numberOfDataBits = 0;// 【0-3】==【8-5】数据位
