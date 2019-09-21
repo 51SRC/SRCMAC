@@ -9,7 +9,6 @@
 #import "ViewController.h"
 #import "ORSSerialPortManager.h"
 
-@class AMPathPopUpButton;
 @implementation ViewController
 
 
