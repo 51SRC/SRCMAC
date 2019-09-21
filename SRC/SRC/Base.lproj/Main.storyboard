@@ -364,7 +364,7 @@
                                     <action selector="clearCounter:" target="XfG-lQ-9wD" id="j6k-N9-bzR"/>
                                 </connections>
                             </button>
-                            <box fixedFrame="YES" title="设置串口参数:" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-qt-xR7">
+                            <box fixedFrame="YES" title="串口设置:" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-qt-xR7">
                                 <rect key="frame" x="180" y="365" width="212" height="206"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="riC-P4-HLr">
@@ -420,14 +420,14 @@
                                         <popUpButton verticalHuggingPriority="750" fixedFrame="YES" tag="1" translatesAutoresizingMaskIntoConstraints="NO" id="zZS-Ju-O7y">
                                             <rect key="frame" x="101" y="113" width="90" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <popUpButtonCell key="cell" type="push" title="Even(偶)" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="VN8-k8-efD" id="skW-hr-FPd">
+                                            <popUpButtonCell key="cell" type="push" title="None" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Zen-hG-rei" id="skW-hr-FPd">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
                                                 <menu key="menu" id="woS-hc-Ptt">
                                                     <items>
-                                                        <menuItem title="None(无)" id="Zen-hG-rei"/>
-                                                        <menuItem title="Odd(奇)" id="hGE-So-7cA"/>
-                                                        <menuItem title="Even(偶)" state="on" id="VN8-k8-efD"/>
+                                                        <menuItem title="None" state="on" id="Zen-hG-rei"/>
+                                                        <menuItem title="Odd" id="hGE-So-7cA"/>
+                                                        <menuItem title="Even" id="VN8-k8-efD"/>
                                                     </items>
                                                 </menu>
                                             </popUpButtonCell>
