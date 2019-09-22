@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "ORSSerialPortManager.h"
 
+#define BaudRatesArray @[@300, @1200, @2400, @4800, @9600, @14400, @19200, @28800, @38400, @57600, @115200, @230400]
+
+
 @implementation ViewController
 
 
@@ -17,7 +20,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         self.serialPortManager = [ORSSerialPortManager sharedSerialPortManager];
-        self.availableBaudRates = @[@300, @1200, @2400, @4800, @9600, @14400, @19200, @28800, @38400, @57600, @115200, @230400];
+        self.availableBaudRates = BaudRatesArray;
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(serialPortsWereConnected:) name:ORSSerialPortsWereConnectedNotification object:nil];
@@ -27,21 +30,22 @@
         [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 #endif
         
-        self.panel = [NSSavePanel savePanel];
-        [self.panel setMessage:@"选择存储路径"];
-        [self.panel setAllowsOtherFileTypes:YES];
-        [self.panel setAllowedFileTypes:@[@"txt"]];
-        [self.panel setExtensionHidden:YES];
-        [self.panel setCanCreateDirectories:YES];
+
         self.isLoopSend = NO;
         self.isWorkInSend = NO;
+        
+        self.utils = [[GTUtils alloc] init];
         
     });
 }
 
-- (void)dealloc
-{
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+-(void)viewDidAppear{
+    [super viewDidAppear];
+    
+    if(self.serialPortManager.availablePorts.count>0){
+        self.serialPort=self.serialPortManager.availablePorts[0];
+    }
 }
 
 
@@ -62,23 +66,8 @@
     self.tableviewFordevices.delegate = self;
 }
 
--(void)viewDidAppear{
-    [super viewDidAppear];
-    
-    if(self.serialPortManager.availablePorts.count>0){
-        self.serialPort=self.serialPortManager.availablePorts[0];
-    }
-}
 
-
-- (void)setRepresentedObject:(id)representedObject {
-    [super setRepresentedObject:representedObject];
-    // Update the view, if already loaded.
-}
-
-
-
-//设置只显示收到的数据，而不添加指示/状态文字等
+//设置只显示数据
 - (IBAction)setDisplayRxDataOnly:(NSButton *)sender {
     if(sender.intValue==1){
         self.isOnlyDisplayRxData = YES;
@@ -90,12 +79,8 @@
 //设置循环发送数据
 - (IBAction)setSendLoop:(NSButton *)sender {
     if(sender.intValue==1){
-        [self.countOfSend setEnabled:YES];
-        [self.TimeInternel setEnabled:YES];
         self.isLoopSend = YES;
     }else{
-        [self.countOfSend setEnabled:NO];
-        [self.TimeInternel setEnabled:NO];
         self.isLoopSend = NO;
     }
     [self stopTimer];
@@ -170,15 +155,14 @@
     
     if (_isLoopSend) {
         //获取次数和间隔值
-        _sendCount = [self.countOfSend.stringValue intValue];
         double timeout = [self.TimeInternel.stringValue doubleValue]/1000.0;
         
-        if(_sendCount<=0 || timeout <= 0){
+        if( timeout <= 0){
             self.StatusText.stringValue = @"请填入循环发送参数(时间间隔和次数)";
             return;
         }
         
-        _timer = [NSTimer scheduledTimerWithTimeInterval:timeout target:self selector:@selector(timeout) userInfo:nil repeats:YES];
+        _timer = [NSTimer scheduledTimerWithTimeInterval:timeout target:self selector:@selector(sendDataWithPort) userInfo:nil repeats:YES];
         self.StatusText.stringValue = @"循环发送中...";
         self.SendButton.title = @"停止循环发送";
         _isWorkInSend = YES;
@@ -197,15 +181,6 @@
         self.SendButton.title = @"手动发送";
     }
     self.isWorkInSend = NO;
-}
-
--(void)timeout{
-    if (0 ==_sendCount) {
-        [self stopTimer];
-        return;
-    }
-    [self sendDataWithPort];
-    _sendCount --;
 }
 
 -(void)sendDataWithPort{
@@ -247,7 +222,7 @@
         
         //显示文字为深灰色，大小为14
         NSInteger startPorint = self.RXDataDisplayTextView.textStorage.length;
-        NSString *sendStr = [NSString stringWithFormat:@"%@ 发送 > %@\n",[self get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
+        NSString *sendStr = [NSString stringWithFormat:@"%@ 发送 > %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
@@ -284,7 +259,7 @@
         
         //显示文字为深灰色，大小为14
         NSInteger startPorint = self.RXDataDisplayTextView.textStorage.length;
-        NSString *sendStr = [NSString stringWithFormat:@"%@ 发送 > %@\n(HEX)->%@\n",[self get2DateTime],textStr,[ORSSerialPortManager oneTwoData:sendData]];
+        NSString *sendStr = [NSString stringWithFormat:@"%@ 发送 > %@\n(HEX)->%@\n",[self.utils get2DateTime],textStr,[ORSSerialPortManager oneTwoData:sendData]];
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
@@ -368,7 +343,7 @@
         string = [NSString stringWithFormat:@"%@\n",string];
         prelen = 0;
     }else{
-        string = [NSString stringWithFormat:@"%@ 接收 > %@\n",[self get2DateTime],string];
+        string = [NSString stringWithFormat:@"%@ 接收 > %@\n",[self.utils get2DateTime],string];
         prelen = (int)string.length-prelen-1;
     }
     
@@ -518,50 +493,20 @@
 // 保存日志文件
 - (IBAction)SaveLog:(id)sender {
     
-    [_panel setNameFieldStringValue:[NSString stringWithFormat:@"%@-%@.txt",_serialPort.name,[self getDateTime]]];
-    
-    [_panel beginSheetModalForWindow:self.view.window completionHandler:^(NSModalResponse result) {
-        if (result == NSFileHandlingPanelOKButton)
-        {
-            NSString *path = [[self.panel URL] path];
-    
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.RXDataDisplayTextView.textStorage.mutableString writeToFile:path atomically:YES encoding:NSUTF8StringEncoding error:nil];
-            });
-        }
-    }];
+    [self.utils setFileName:[NSString stringWithFormat:@"%@-%@.txt",_serialPort.name,[self.utils getDateTime]] andTextView:self.RXDataDisplayTextView window:self.view.window];
 }
 
-- (NSString *)getDateTime
-{
-    char dateTime[15];
-    time_t t;
-    struct tm tm;
-    t = time( NULL );
-    memcpy(&tm, localtime(&t), sizeof(struct tm));
-    sprintf(dateTime, "%04d%02d%02d%02d%02d%02d",
-            tm.tm_year+1900, tm.tm_mon+1, tm.tm_mday,
-            tm.tm_hour, tm.tm_min,tm.tm_sec);
-    return [[NSString alloc] initWithCString:dateTime encoding:NSASCIIStringEncoding];
+
+- (void)setRepresentedObject:(id)representedObject {
+    [super setRepresentedObject:representedObject];
+    // Update the view, if already loaded.
 }
 
-- (NSString *)get2DateTime
+
+- (void)dealloc
 {
-//    char dateTime[15];
-//    time_t t;
-//    struct tm tm;
-//    t = time( NULL );
-//    memcpy(&tm, localtime(&t), sizeof(struct tm));
-//    sprintf(dateTime, "%02d:%02d:%02d",
-//            tm.tm_hour, tm.tm_min,tm.tm_sec);
-//    return [[NSString alloc] initWithCString:dateTime encoding:NSASCIIStringEncoding];
-    
-    NSString* date;
-    NSDateFormatter * formatter = [[NSDateFormatter alloc ] init];
-    //[formatter setDateFormat:@"YYYY.MM.dd.hh.mm.ss"];
-    [formatter setDateFormat:@"hh:mm:ss.SSS"];
-    date = [formatter stringFromDate:[NSDate date]];
-    NSString * timeNow = [[NSString alloc] initWithFormat:@"%@", date];
-    return timeNow;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+
 @end

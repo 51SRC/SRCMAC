@@ -8,8 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ORSSerialPort.h"
+#import "GTUtils.h"
 
-@class ORSSerialPortManager;
+@class ORSSerialPortManager ;
 
 @interface ViewController : NSViewController <ORSSerialPortDelegate, NSUserNotificationCenterDelegate,NSTextViewDelegate,NSTableViewDelegate>
 @property (weak) IBOutlet NSArrayController *DeviceArray;
@@ -31,7 +32,6 @@
 @property (weak) IBOutlet NSMatrix *stringType_TX;
 
 @property (weak) IBOutlet NSTextField *TimeInternel;
-@property (weak) IBOutlet NSTextField *countOfSend;
 @property (weak) IBOutlet NSButton *SendButton;
 
 @property (weak) IBOutlet NSTableView *tableviewFordevices;
@@ -47,12 +47,13 @@
 @property (nonatomic, strong) ORSSerialPort *serialPort;//ORSSerialPort
 @property (nonatomic, strong) NSArray *availableBaudRates;
 
-@property (nonatomic,strong) NSSavePanel*  panel;
 @property (nonatomic, assign) BOOL isLoopSend;
 @property (nonatomic, assign) BOOL isWorkInSend;
 @property (nonatomic, assign) BOOL isOnlyDisplayRxData;
 @property (assign,nonatomic) int sendCount;
 @property (assign,nonatomic) NSTimer *timer;
-@property (nonatomic, strong) NSWindow *MyMoneyWindow;
+
+@property (nonatomic, strong) GTUtils *utils;
+
 @end
 

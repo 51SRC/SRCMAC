@@ -20,6 +20,7 @@
 		550F77AA23327A34001AF2F8 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779F23327A34001AF2F8 /* ORSSerialPort.m */; };
 		550F77B223327B56001AF2F8 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F77AE23327B55001AF2F8 /* MainWindow.m */; };
 		550F77B323327B56001AF2F8 /* NSMyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F77AF23327B55001AF2F8 /* NSMyWindowController.m */; };
+		55F362F62337628F0067506B /* GTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F362F52337628F0067506B /* GTUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,8 @@
 		550F77AF23327B55001AF2F8 /* NSMyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMyWindowController.m; sourceTree = "<group>"; };
 		550F77B023327B56001AF2F8 /* NSMyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMyWindowController.h; sourceTree = "<group>"; };
 		550F77B123327B56001AF2F8 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		55F362F42337628F0067506B /* GTUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtils.h; sourceTree = "<group>"; };
+		55F362F52337628F0067506B /* GTUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +92,8 @@
 				550F77AE23327B55001AF2F8 /* MainWindow.m */,
 				550F7787233279F4001AF2F8 /* ViewController.h */,
 				550F7788233279F4001AF2F8 /* ViewController.m */,
+				55F362F42337628F0067506B /* GTUtils.h */,
+				55F362F52337628F0067506B /* GTUtils.m */,
 				550F778C233279F5001AF2F8 /* Main.storyboard */,
 				550F779823327A34001AF2F8 /* Source */,
 				550F778A233279F5001AF2F8 /* Assets.xcassets */,
@@ -195,6 +200,7 @@
 				550F7791233279F5001AF2F8 /* main.m in Sources */,
 				550F77A923327A34001AF2F8 /* ORSSerialPortManager.m in Sources */,
 				550F77B323327B56001AF2F8 /* NSMyWindowController.m in Sources */,
+				55F362F62337628F0067506B /* GTUtils.m in Sources */,
 				550F77AA23327A34001AF2F8 /* ORSSerialPort.m in Sources */,
 				550F77A623327A34001AF2F8 /* DecodeBytesCharsets.c in Sources */,
 				550F7786233279F4001AF2F8 /* AppDelegate.m in Sources */,
