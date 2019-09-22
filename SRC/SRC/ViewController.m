@@ -97,10 +97,9 @@
 - (IBAction)setDisplayMode:(NSMatrix *)sender {
     if (sender.selectedTag==1) {
         self.isRXHexString = YES;
-        [self.stringType setEnabled:NO];
     }else if(sender.selectedTag==2){
         self.isRXHexString = NO;
-        [self.stringType setEnabled:YES];
+        self.isRXGBKString = NO;
     }
 }
 
@@ -109,30 +108,9 @@
     
     if (sender.selectedTag==1) {
         self.isTXHexString = YES;
-        [self.stringType_TX setEnabled:NO];
     }else{
         self.isTXHexString = NO;
-        [self.stringType_TX setEnabled:YES];
-    }
-}
-
-//设置接收区字符串编码方式
-- (IBAction)setStringDisplayEncode:(NSMatrix *)sender {
-    if (sender.selectedTag==1) {
-        self.isRXGBKString = NO;
-        [self.RXDataDisplayTextView.textStorage.mutableString appendString:@"接收区格式变更为--> ASCII\n"];
-    }else{
-        self.isRXGBKString = YES;
-       [self.RXDataDisplayTextView.textStorage.mutableString appendString:@"接收区格式变更为--> GBK\n"];
-    }
-}
-
-//设置发送区字符串编码方式
-- (IBAction)setStringDisplayEncode_TX:(NSMatrix *)sender {
-    if (sender.selectedTag==1) {
         _isTXGBKString = NO;
-    }else{
-        _isTXGBKString = YES;
     }
 }
 
@@ -149,7 +127,7 @@
     self.StatusText.stringValue = @"发送数据中...";
     NSString *textStr = self.TXDataDisplayTextView.textStorage.mutableString;
     if(textStr.length==0){
-        self.StatusText.stringValue = @"发送数据长度为0";
+        self.StatusText.stringValue = @"发送数据为空";
         return;
     }
     
@@ -158,13 +136,13 @@
         double timeout = [self.TimeInternel.stringValue doubleValue]/1000.0;
         
         if( timeout <= 0){
-            self.StatusText.stringValue = @"请填入循环发送参数(时间间隔和次数)";
+            self.StatusText.stringValue = @"请填入循环时间间隔";
             return;
         }
         
         _timer = [NSTimer scheduledTimerWithTimeInterval:timeout target:self selector:@selector(sendDataWithPort) userInfo:nil repeats:YES];
         self.StatusText.stringValue = @"循环发送中...";
-        self.SendButton.title = @"停止循环发送";
+        self.SendButton.title = @"发送";
         _isWorkInSend = YES;
         
     }else{
@@ -176,9 +154,9 @@
     [_timer invalidate];
     _timer = nil;
     if (_isLoopSend) {
-        self.SendButton.title = @"循环发送";
+        self.SendButton.title = @"发送";
     }else{
-        self.SendButton.title = @"手动发送";
+        self.SendButton.title = @"发送";
     }
     self.isWorkInSend = NO;
 }
@@ -186,7 +164,7 @@
 -(void)sendDataWithPort{
     
     if (!self.serialPort.isOpen) {
-        self.StatusText.stringValue = @"串口未打开，不能发送数据";
+        self.StatusText.stringValue = @"请打开串口";
         return;
     }
     
@@ -214,7 +192,7 @@
         sendData = [ORSSerialPortManager twoOneData:textStr];
         if([self.serialPort sendData:sendData]){
             self.StatusText.stringValue = @"发送HEX数据成功";
-            self.TXCounter.stringValue = [NSString stringWithFormat:@"%ld",self.TXNumber];
+            self.TXCounter.stringValue = [NSString stringWithFormat:@"%ld Bytes",self.TXNumber];
         }else{
             self.StatusText.stringValue = @"发送HEX数据失败";
             return;
@@ -222,11 +200,11 @@
         
         //显示文字为深灰色，大小为14
         NSInteger startPorint = self.RXDataDisplayTextView.textStorage.length;
-        NSString *sendStr = [NSString stringWithFormat:@"%@ 发送 > %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
+        NSString *sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:NSMakeRange(startPorint, length)];
+        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor systemBlueColor] range:NSMakeRange(startPorint, length)];
         
         [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
         return;
@@ -234,19 +212,15 @@
         
         const char* cstr;
         NSString *tmp;
-        if (_isTXGBKString) {
-            NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-            cstr = [textStr cStringUsingEncoding:enc];
-            tmp = @"发送GBK编码数据成功";
-        }else{
-            cstr = [textStr cStringUsingEncoding:NSUTF8StringEncoding];
-            tmp = @"发送UTF8编码数据成功";
-        }
+
+        cstr = [textStr cStringUsingEncoding:NSUTF8StringEncoding];
+        tmp = @"发送UTF8编码数据成功";
+        
         if(cstr!=NULL){
             self.TXNumber += strlen(cstr);
             sendData = [NSData dataWithBytes:cstr length:strlen(cstr)];
             if([self.serialPort sendData:sendData]){
-                self.TXCounter.stringValue = [NSString stringWithFormat:@"%ld",self.TXNumber];
+                self.TXCounter.stringValue = [NSString stringWithFormat:@"%ld Bytes",self.TXNumber];
                 self.StatusText.stringValue = tmp;
             }else{
                 self.StatusText.stringValue = @"发送数据失败";
@@ -259,7 +233,7 @@
         
         //显示文字为深灰色，大小为14
         NSInteger startPorint = self.RXDataDisplayTextView.textStorage.length;
-        NSString *sendStr = [NSString stringWithFormat:@"%@ 发送 > %@\n(HEX)->%@\n",[self.utils get2DateTime],textStr,[ORSSerialPortManager oneTwoData:sendData]];
+        NSString *sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],textStr];
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
@@ -270,23 +244,12 @@
     }
 }
 
-- (IBAction)clearTXDataDisplayTextView:(id)sender {
-    self.StatusText.stringValue = @"已清空发送区";
-    [self.TXDataDisplayTextView setString:@""];
-}
-
 - (IBAction)clearRXDataDisplayTextView:(id)sender {
-    self.StatusText.stringValue = @"已清空接收区";
     [self.RXDataDisplayTextView setString:@""];
-}
-
-- (IBAction)clearCounter:(id)sender {
-    
     self.RXNumber = 0;
+    self.RXCounter.stringValue = @"0 Bytes";
     self.TXNumber = 0;
-    self.TXCounter.stringValue=@"";
-    self.RXCounter.stringValue = @"";
-    
+    self.TXCounter.stringValue=@"0 Bytes";
 }
 
 
@@ -301,13 +264,13 @@
 
 - (void)serialPortWasOpened:(ORSSerialPort *)serialPort
 {
-    self.OpenOrClose.title = @"关闭串口";
+    self.OpenOrClose.title = @"关闭";
     self.StatusText.stringValue = @"串口已打开";
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort
 {
-    self.OpenOrClose.title = @"打开串口";
+    self.OpenOrClose.title = @"打开";
     self.StatusText.stringValue = @"串口已关闭";
 }
 
@@ -319,7 +282,7 @@
     NSLog(@"收到数据: %@",data);
     self.StatusText.stringValue = @"收到一次数据...";
     self.RXNumber += data.length;
-    self.RXCounter.stringValue = [NSString stringWithFormat:@"%ld",self.RXNumber];
+    self.RXCounter.stringValue = [NSString stringWithFormat:@"%ld Bytes",self.RXNumber];
     
     NSString *string;
     if (self.isRXHexString) {
@@ -375,7 +338,7 @@
 {
     // After a serial port is removed from the system, it is invalid and we must discard any references to it
     self.serialPort = nil;
-    self.OpenOrClose.title = @"打开串口";
+    self.OpenOrClose.title = @"打开";
 }
 
 //各种错误，比如打开，关闭，发送数据等发生错误
@@ -483,7 +446,7 @@
         _serialPort.delegate = nil;
         _serialPort = port;
         _serialPort.delegate = self;
-        self.OpenOrClose.title = self.serialPort.isOpen ? @"关闭串口" : @"打开串口";
+        self.OpenOrClose.title = self.serialPort.isOpen ? @"关闭" : @"打开";
         NSString *tmp=[NSString stringWithFormat:@"%@%@",_serialPort.name,(self.serialPort.isOpen ? @"串口已打开" : @"串口已关闭")];
         self.StatusText.stringValue = tmp;
     }
