@@ -21,6 +21,7 @@
     dispatch_once(&onceToken, ^{
         self.serialPortManager = [ORSSerialPortManager sharedSerialPortManager];
         self.availableBaudRates = BaudRatesArray;
+        self.serialPortMArr = [[NSMutableArray alloc]init];
         
         NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
         [nc addObserver:self selector:@selector(serialPortsWereConnected:) name:ORSSerialPortsWereConnectedNotification object:nil];
@@ -200,7 +201,16 @@
         
         //显示文字为深灰色，大小为14
         NSInteger startPorint = self.RXDataDisplayTextView.textStorage.length;
-        NSString *sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
+        
+        NSString *sendStr =@"";
+        if(self.isOnlyDisplayRxData){
+            sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
+
+        }else{
+            sendStr = [NSString stringWithFormat:@"%@\n",[ORSSerialPortManager oneTwoData:sendData]];
+
+            
+        }
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
@@ -237,7 +247,7 @@
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor darkGrayColor] range:NSMakeRange(startPorint, length)];
+        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor systemBlueColor] range:NSMakeRange(startPorint, length)];
         
         [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
         return;
@@ -255,7 +265,7 @@
 
 -(void)textDidChange:(NSNotification *)notification {
     
-    [self.TXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:18] range:NSMakeRange(0, [self.TXDataDisplayTextView string].length)];
+    [self.TXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(0, [self.TXDataDisplayTextView string].length)];
     [self.TXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor blackColor] range:NSMakeRange(0, [self.TXDataDisplayTextView string].length)];
     [self.TXDataDisplayTextView.textStorage addAttribute:NSBackgroundColorAttributeName value:[NSColor whiteColor] range:NSMakeRange(0, [self.TXDataDisplayTextView string].length)];
 }
@@ -288,14 +298,7 @@
     if (self.isRXHexString) {
         string = [ORSSerialPortManager oneTwoData:data];
     }else{
-        
-        if(self.isRXGBKString){
-            NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-//            string = [NSString stringWithCString:(const char*)[data bytes] encoding:enc];
-            string = [[NSString alloc] initWithData:data encoding:enc];
-        }else{
-            string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-        }
+        string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     }
     if ([string length] == 0){
         return;
@@ -306,7 +309,7 @@
         string = [NSString stringWithFormat:@"%@\n",string];
         prelen = 0;
     }else{
-        string = [NSString stringWithFormat:@"%@ 接收 > %@\n",[self.utils get2DateTime],string];
+        string = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],string];
         prelen = (int)string.length-prelen-1;
     }
     

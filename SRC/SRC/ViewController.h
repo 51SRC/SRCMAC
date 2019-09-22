@@ -28,8 +28,6 @@
 @property (unsafe_unretained) IBOutlet NSTextView *RXDataDisplayTextView;
 
 @property (unsafe_unretained) IBOutlet NSTextView *TXDataDisplayTextView;
-@property (weak) IBOutlet NSMatrix *stringType;
-@property (weak) IBOutlet NSMatrix *stringType_TX;
 
 @property (weak) IBOutlet NSTextField *TimeInternel;
 @property (weak) IBOutlet NSButton *SendButton;
@@ -46,6 +44,7 @@
 @property (nonatomic, strong) ORSSerialPortManager *serialPortManager;
 @property (nonatomic, strong) ORSSerialPort *serialPort;//ORSSerialPort
 @property (nonatomic, strong) NSArray *availableBaudRates;
+@property (nonatomic, strong) NSMutableArray *serialPortMArr;
 
 @property (nonatomic, assign) BOOL isLoopSend;
 @property (nonatomic, assign) BOOL isWorkInSend;
