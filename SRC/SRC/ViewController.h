@@ -12,8 +12,7 @@
 
 @class ORSSerialPortManager ;
 
-@interface ViewController : NSViewController <ORSSerialPortDelegate, NSUserNotificationCenterDelegate,NSTextViewDelegate,NSTableViewDelegate>
-@property (weak) IBOutlet NSArrayController *DeviceArray;
+@interface ViewController : NSViewController <ORSSerialPortDelegate, NSUserNotificationCenterDelegate,NSTextViewDelegate>
 
 @property (weak) IBOutlet NSButton *OpenOrClose;
 
@@ -31,8 +30,7 @@
 
 @property (weak) IBOutlet NSTextField *TimeInternel;
 @property (weak) IBOutlet NSButton *SendButton;
-
-@property (weak) IBOutlet NSTableView *tableviewFordevices;
+@property (weak) IBOutlet NSPopUpButton *SendsButton;
 
 @property (nonatomic, assign) BOOL isRXHexString;
 

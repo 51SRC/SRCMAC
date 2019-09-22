@@ -34,7 +34,8 @@
 
         self.isLoopSend = NO;
         self.isWorkInSend = NO;
-        
+        self.isOnlyDisplayRxData = YES;
+
         self.utils = [[GTUtils alloc] init];
         
     });
@@ -46,6 +47,9 @@
     
     if(self.serialPortManager.availablePorts.count>0){
         self.serialPort=self.serialPortManager.availablePorts[0];
+        for (int i=0; i<self.serialPortManager.availablePorts.count; i++) {
+            [self.serialPortMArr addObject:self.serialPortManager.availablePorts[i]];
+        }
     }
 }
 
@@ -64,16 +68,15 @@
     self.RXNumber = 0;
     // Do any additional setup after loading the view.
     self.TXDataDisplayTextView.delegate = self;
-    self.tableviewFordevices.delegate = self;
 }
 
 
 //设置只显示数据
 - (IBAction)setDisplayRxDataOnly:(NSButton *)sender {
     if(sender.intValue==1){
-        self.isOnlyDisplayRxData = YES;
-    }else{
         self.isOnlyDisplayRxData = NO;
+    }else{
+        self.isOnlyDisplayRxData = YES;
     }
 }
 
@@ -204,10 +207,10 @@
         
         NSString *sendStr =@"";
         if(self.isOnlyDisplayRxData){
-            sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
+            sendStr = [NSString stringWithFormat:@"%@\n",[ORSSerialPortManager oneTwoData:sendData]];
 
         }else{
-            sendStr = [NSString stringWithFormat:@"%@\n",[ORSSerialPortManager oneTwoData:sendData]];
+            sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
 
             
         }
@@ -284,6 +287,7 @@
     self.StatusText.stringValue = @"串口已关闭";
 }
 
+
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data
 {
     if(serialPort!=self.serialPort){//不是同一个对象，直接返回
@@ -306,7 +310,7 @@
     
     int prelen = (int)string.length;
     if(self.isOnlyDisplayRxData){
-        string = [NSString stringWithFormat:@"%@\n",string];
+        string = [NSString stringWithFormat:@"%@",string];
         prelen = 0;
     }else{
         string = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],string];
@@ -320,18 +324,12 @@
     [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
     
     //前面提示语句设为红色
-    [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor redColor] range:NSMakeRange(startPorint, prelen)];
+//    [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor greenColor] range:NSMakeRange(startPorint, prelen)];
     
-    static int i = 0;
-    if(i%2==0){
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor greenColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSBackgroundColorAttributeName value:[NSColor brownColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
-    }else{
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor yellowColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSBackgroundColorAttributeName value:[NSColor blackColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
-    }
+//        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor greenColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
+//        [self.RXDataDisplayTextView.textStorage addAttribute:NSBackgroundColorAttributeName value:[NSColor brownColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
+    
     [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
-    i++;
     
     [self.RXDataDisplayTextView setNeedsDisplay:YES];
     self.StatusText.stringValue = @"数据接收完毕";
@@ -402,6 +400,9 @@
         userNote.informativeText = [NSString stringWithFormat:informativeTextFormat, port.name];
         userNote.soundName = nil;
         [unc deliverNotification:userNote];
+        
+        //连接刚刚插入的串口设备
+        [self setSerialPort:port];
     }
 #endif
 }
@@ -420,23 +421,31 @@
         userNote.informativeText = [NSString stringWithFormat:informativeTextFormat, port.name];
         userNote.soundName = nil;
         [unc deliverNotification:userNote];
+        
+        [self.serialPortMArr removeObject:port];
+        
+         //连接默认第一个设备
+        if(self.serialPortMArr.count>0){
+           
+            [self setSerialPort:self.serialPortMArr[0]];
+        }
     }
 #endif
 }
 
--(void)tableViewSelectionDidChange:(NSNotification*)notification{
-    self.serialPort = [self getCurrentORSSerialPort];
-    self.serialPort.delegate = self;
-    self.serialPort.allowsNonStandardBaudRates = YES;//允许非标准的波特率
-}
+//-(void)tableViewSelectionDidChange:(NSNotification*)notification{
+//    self.serialPort = [self getCurrentORSSerialPort];
+//    self.serialPort.delegate = self;
+//    self.serialPort.allowsNonStandardBaudRates = YES;//允许非标准的波特率
+//}
 
--(ORSSerialPort *)getCurrentORSSerialPort {
-    if([[self.DeviceArray selectedObjects] count]> 0){
-        return [[self.DeviceArray selectedObjects] objectAtIndex:0];
-    } else {
-        return nil;
-    }
-}
+//-(ORSSerialPort *)getCurrentORSSerialPort {
+//    if([[self.DeviceArray selectedObjects] count]> 0){
+//        return [[self.DeviceArray selectedObjects] objectAtIndex:0];
+//    } else {
+//        return nil;
+//    }
+//}
 
 
 #pragma mark - Properties
