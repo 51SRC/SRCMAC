@@ -13,13 +13,13 @@
 		550F778E233279F5001AF2F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 550F778C233279F5001AF2F8 /* Main.storyboard */; };
 		550F7791233279F5001AF2F8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F7790233279F5001AF2F8 /* main.m */; };
 		550F77A523327A34001AF2F8 /* ORSSerialPacketDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */; };
-		550F77A623327A34001AF2F8 /* DecodeBytesCharsets.c in Sources */ = {isa = PBXBuildFile; fileRef = 550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */; };
 		550F77A723327A34001AF2F8 /* ORSSerialBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */; };
 		550F77A823327A34001AF2F8 /* ORSSerialRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779D23327A34001AF2F8 /* ORSSerialRequest.m */; };
 		550F77A923327A34001AF2F8 /* ORSSerialPortManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */; };
 		550F77AA23327A34001AF2F8 /* ORSSerialPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F779F23327A34001AF2F8 /* ORSSerialPort.m */; };
 		550F77B223327B56001AF2F8 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F77AE23327B55001AF2F8 /* MainWindow.m */; };
 		550F77B323327B56001AF2F8 /* NSMyWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 550F77AF23327B55001AF2F8 /* NSMyWindowController.m */; };
+		55EF7C86233F2ED2008F6E6F /* DecodeBytesCharsets.c in Sources */ = {isa = PBXBuildFile; fileRef = 55EF7C84233F2ED2008F6E6F /* DecodeBytesCharsets.c */; };
 		55F362F62337628F0067506B /* GTUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 55F362F52337628F0067506B /* GTUtils.m */; };
 /* End PBXBuildFile section */
 
@@ -36,20 +36,20 @@
 		550F7792233279F5001AF2F8 /* SRC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SRC.entitlements; sourceTree = "<group>"; };
 		550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPacketDescriptor.m; sourceTree = "<group>"; };
 		550F779A23327A34001AF2F8 /* ORSSerialPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPort.h; sourceTree = "<group>"; };
-		550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DecodeBytesCharsets.c; sourceTree = "<group>"; };
 		550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialBuffer.m; sourceTree = "<group>"; };
 		550F779D23327A34001AF2F8 /* ORSSerialRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialRequest.m; sourceTree = "<group>"; };
 		550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPortManager.m; sourceTree = "<group>"; };
 		550F779F23327A34001AF2F8 /* ORSSerialPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORSSerialPort.m; sourceTree = "<group>"; };
 		550F77A023327A34001AF2F8 /* ORSSerialPacketDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPacketDescriptor.h; sourceTree = "<group>"; };
 		550F77A123327A34001AF2F8 /* ORSSerialBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialBuffer.h; sourceTree = "<group>"; };
-		550F77A223327A34001AF2F8 /* DecodeBytesCharsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecodeBytesCharsets.h; sourceTree = "<group>"; };
 		550F77A323327A34001AF2F8 /* ORSSerialRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialRequest.h; sourceTree = "<group>"; };
 		550F77A423327A34001AF2F8 /* ORSSerialPortManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORSSerialPortManager.h; sourceTree = "<group>"; };
 		550F77AE23327B55001AF2F8 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
 		550F77AF23327B55001AF2F8 /* NSMyWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMyWindowController.m; sourceTree = "<group>"; };
 		550F77B023327B56001AF2F8 /* NSMyWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMyWindowController.h; sourceTree = "<group>"; };
 		550F77B123327B56001AF2F8 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		55EF7C84233F2ED2008F6E6F /* DecodeBytesCharsets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = DecodeBytesCharsets.c; sourceTree = "<group>"; };
+		55EF7C85233F2ED2008F6E6F /* DecodeBytesCharsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DecodeBytesCharsets.h; sourceTree = "<group>"; };
 		55F362F42337628F0067506B /* GTUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTUtils.h; sourceTree = "<group>"; };
 		55F362F52337628F0067506B /* GTUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GTUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,10 +107,10 @@
 		550F779823327A34001AF2F8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				55EF7C84233F2ED2008F6E6F /* DecodeBytesCharsets.c */,
+				55EF7C85233F2ED2008F6E6F /* DecodeBytesCharsets.h */,
 				550F779A23327A34001AF2F8 /* ORSSerialPort.h */,
 				550F779F23327A34001AF2F8 /* ORSSerialPort.m */,
-				550F77A223327A34001AF2F8 /* DecodeBytesCharsets.h */,
-				550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */,
 				550F77A123327A34001AF2F8 /* ORSSerialBuffer.h */,
 				550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */,
 				550F77A323327A34001AF2F8 /* ORSSerialRequest.h */,
@@ -194,6 +194,7 @@
 			files = (
 				550F7789233279F4001AF2F8 /* ViewController.m in Sources */,
 				550F77A523327A34001AF2F8 /* ORSSerialPacketDescriptor.m in Sources */,
+				55EF7C86233F2ED2008F6E6F /* DecodeBytesCharsets.c in Sources */,
 				550F77A823327A34001AF2F8 /* ORSSerialRequest.m in Sources */,
 				550F77A723327A34001AF2F8 /* ORSSerialBuffer.m in Sources */,
 				550F77B223327B56001AF2F8 /* MainWindow.m in Sources */,
@@ -202,7 +203,6 @@
 				550F77B323327B56001AF2F8 /* NSMyWindowController.m in Sources */,
 				55F362F62337628F0067506B /* GTUtils.m in Sources */,
 				550F77AA23327A34001AF2F8 /* ORSSerialPort.m in Sources */,
-				550F77A623327A34001AF2F8 /* DecodeBytesCharsets.c in Sources */,
 				550F7786233279F4001AF2F8 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -345,7 +345,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guntertien.srcmac.SRC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -364,7 +364,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = com.guntertien.srcmac.SRC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

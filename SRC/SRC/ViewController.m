@@ -8,6 +8,11 @@
 
 #import "ViewController.h"
 #import "ORSSerialPortManager.h"
+#import "ORSSerialPort.h"
+//#import "ORSSerialPortManager.h"
+#import "ORSSerialRequest.h"
+#import "ORSSerialPacketDescriptor.h"
+
 
 #define BaudRatesArray @[@300, @1200, @2400, @4800, @9600, @14400, @19200, @28800, @38400, @57600, @115200, @230400]
 
@@ -209,12 +214,10 @@
         NSString *sendStr =@"";
         if(self.isOnlyDisplayRxData){
             sendStr = [NSString stringWithFormat:@"%@\n",[ORSSerialPortManager oneTwoData:sendData]];
-
         }else{
             sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],[ORSSerialPortManager oneTwoData:sendData]];
-
-            
         }
+        
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
@@ -247,7 +250,15 @@
         
         //显示文字为深灰色，大小为14
         NSInteger startPorint = self.RXDataDisplayTextView.textStorage.length;
-        NSString *sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],textStr];
+        
+        NSString *sendStr =@"";
+        if(self.isOnlyDisplayRxData){
+            sendStr = [NSString stringWithFormat:@"%@\n",textStr];
+        }else{
+            sendStr = [NSString stringWithFormat:@"%@ %@\n",[self.utils get2DateTime],textStr];
+        }
+        
+        
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
@@ -266,6 +277,13 @@
     self.TXCounter.stringValue=@"0 Bytes";
 }
 
+//- (void)serialPort:(ORSSerialPort *)serialPort didReceivePacket:(NSData *)packetData matchingDescriptor:(ORSSerialPacketDescriptor *)descriptor
+//{
+//    NSString *dataAsString = [[NSString alloc] initWithData:packetData encoding:NSASCIIStringEncoding];
+////    NSString *valueString = [dataAsString substringWithRange:NSMakeRange(4, [dataAsString length]-5)];
+//    NSLog(@"%@",dataAsString);
+//}
+
 
 -(void)textDidChange:(NSNotification *)notification {
     
@@ -280,6 +298,13 @@
 {
     self.OpenOrClose.title = @"关闭";
     self.StatusText.stringValue = @"串口已打开";
+    
+//    ORSSerialPacketDescriptor *descriptor = [[ORSSerialPacketDescriptor alloc] initWithPrefixString:@""
+//                                                                                       suffixString:@""
+//                                                                                maximumPacketLength:1024
+//                                                                                           userInfo:nil];
+//    [serialPort startListeningForPacketsMatchingDescriptor:descriptor];
+    
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort
@@ -294,7 +319,7 @@
     if(serialPort!=self.serialPort){//不是同一个对象，直接返回
         return;
     }
-    NSLog(@"收到数据: %@",data);
+//    NSLog(@"收到数据: %@",data);
     self.StatusText.stringValue = @"收到一次数据...";
     self.RXNumber += data.length;
     self.RXCounter.stringValue = [NSString stringWithFormat:@"%ld Bytes",self.RXNumber];
@@ -442,9 +467,10 @@
         self.OpenOrClose.title = self.serialPort.isOpen ? @"关闭" : @"打开";
         NSString *tmp=[NSString stringWithFormat:@"%@%@",_serialPort.name,(self.serialPort.isOpen ? @"串口已打开" : @"串口已关闭")];
         self.StatusText.stringValue = tmp;
-//        [_serialPort startListeningForPacketsMatchingDescriptor:<#(nonnull ORSSerialPacketDescriptor *)#>];
     }
 }
+
+
 
 
 // 保存日志文件
