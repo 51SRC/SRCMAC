@@ -17,7 +17,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="RS232 Tool" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="关于SRC" id="5kV-Vb-QxS">
+                                        <menuItem title="关于RS232 Tool" id="5kV-Vb-QxS">
                                             <attributedString key="attributedTitle">
                                                 <fragment content="关于">
                                                     <attributes>
@@ -240,7 +240,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ihN-rq-KkF">
-                                                <rect key="frame" x="601" y="0.0" width="16" height="404"/>
+                                                <rect key="frame" x="601" y="0.0" width="16" height="410"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -256,18 +256,18 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3j-jX-V2I">
-                                            <rect key="frame" x="9" y="5" width="557" height="78"/>
+                                            <rect key="frame" x="9" y="5" width="557" height="72"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <clipView key="contentView" ambiguous="YES" drawsBackground="NO" id="tiR-4X-Qs8">
-                                                <rect key="frame" x="0.0" y="0.0" width="557" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="557" height="72"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" id="Uy1-nd-yEM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="557" height="78"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="557" height="72"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                        <size key="minSize" width="557" height="78"/>
+                                                        <size key="minSize" width="557" height="72"/>
                                                         <size key="maxSize" width="562" height="10000000"/>
                                                         <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     </textView>
@@ -278,7 +278,7 @@
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="S4c-tH-VPL">
-                                                <rect key="frame" x="384" y="1" width="16" height="70"/>
+                                                <rect key="frame" x="541" y="0.0" width="16" height="72"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
@@ -297,7 +297,7 @@
                                 </view>
                                 <font key="titleFont" size="13" name=".AppleSystemUIFont"/>
                             </box>
-                            <box fixedFrame="YES" title="串口设置:" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-qt-xR7">
+                            <box fixedFrame="YES" title="串口设置" translatesAutoresizingMaskIntoConstraints="NO" id="u3c-qt-xR7">
                                 <rect key="frame" x="17" y="363" width="212" height="181"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="riC-P4-HLr">
@@ -437,8 +437,8 @@
                                                 </menu>
                                             </popUpButtonCell>
                                             <connections>
+                                                <binding destination="XfG-lQ-9wD" name="selectedObject" keyPath="serialPort" previousBinding="AOh-6z-C4v" id="JIa-l5-v4S"/>
                                                 <binding destination="XfG-lQ-9wD" name="contentValues" keyPath="serialPortManager.availablePorts" id="AOh-6z-C4v"/>
-                                                <binding destination="XfG-lQ-9wD" name="selectedObject" keyPath="serialPort.name" id="Tzi-7P-c1Z"/>
                                             </connections>
                                         </popUpButton>
                                     </subviews>
@@ -450,11 +450,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" placeholderString="请打开串口" id="Bgg-cU-2oC">
                                     <font key="font" metaFont="systemLight" size="13"/>
-                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.69200111040609136" green="0.10351700723905323" blue="0.0059787397907062586" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <box fixedFrame="YES" title="接收设置:" translatesAutoresizingMaskIntoConstraints="NO" id="AFi-Dk-2Da">
+                            <box fixedFrame="YES" title="接收设置" translatesAutoresizingMaskIntoConstraints="NO" id="AFi-Dk-2Da">
                                 <rect key="frame" x="17" y="281" width="212" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <view key="contentView" id="5W6-1s-3T8">
@@ -504,7 +504,7 @@
                                 </view>
                                 <font key="titleFont" metaFont="systemLight" size="13"/>
                             </box>
-                            <box fixedFrame="YES" title="发送设置:" translatesAutoresizingMaskIntoConstraints="NO" id="apQ-Dd-YaJ">
+                            <box fixedFrame="YES" title="发送设置" translatesAutoresizingMaskIntoConstraints="NO" id="apQ-Dd-YaJ">
                                 <rect key="frame" x="17" y="191" width="212" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" id="eIK-IE-bCX">
@@ -672,7 +672,7 @@
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="9Gd-ox-IDF"/>
             </objects>
-            <point key="canvasLocation" x="162" y="1246"/>
+            <point key="canvasLocation" x="168" y="1220"/>
         </scene>
     </scenes>
     <resources>

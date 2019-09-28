@@ -107,18 +107,18 @@
 		550F779823327A34001AF2F8 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */,
 				550F779A23327A34001AF2F8 /* ORSSerialPort.h */,
-				550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */,
-				550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */,
-				550F779D23327A34001AF2F8 /* ORSSerialRequest.m */,
-				550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */,
 				550F779F23327A34001AF2F8 /* ORSSerialPort.m */,
-				550F77A023327A34001AF2F8 /* ORSSerialPacketDescriptor.h */,
-				550F77A123327A34001AF2F8 /* ORSSerialBuffer.h */,
 				550F77A223327A34001AF2F8 /* DecodeBytesCharsets.h */,
+				550F779B23327A34001AF2F8 /* DecodeBytesCharsets.c */,
+				550F77A123327A34001AF2F8 /* ORSSerialBuffer.h */,
+				550F779C23327A34001AF2F8 /* ORSSerialBuffer.m */,
 				550F77A323327A34001AF2F8 /* ORSSerialRequest.h */,
+				550F779D23327A34001AF2F8 /* ORSSerialRequest.m */,
 				550F77A423327A34001AF2F8 /* ORSSerialPortManager.h */,
+				550F779E23327A34001AF2F8 /* ORSSerialPortManager.m */,
+				550F77A023327A34001AF2F8 /* ORSSerialPacketDescriptor.h */,
+				550F779923327A34001AF2F8 /* ORSSerialPacketDescriptor.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";

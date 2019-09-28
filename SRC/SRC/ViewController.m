@@ -54,6 +54,7 @@
 }
 
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -217,7 +218,7 @@
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor systemBlueColor] range:NSMakeRange(startPorint, length)];
+        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor blackColor] range:NSMakeRange(startPorint, length)];
         
         [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
         return;
@@ -250,7 +251,7 @@
         NSInteger length = sendStr.length;
         [self.RXDataDisplayTextView.textStorage.mutableString appendString:sendStr];
         [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
-        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor systemBlueColor] range:NSMakeRange(startPorint, length)];
+        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor blackColor ] range:NSMakeRange(startPorint, length)];
         
         [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
         return;
@@ -322,12 +323,6 @@
     NSInteger length = string.length;
     [self.RXDataDisplayTextView.textStorage.mutableString appendString:string];
     [self.RXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(startPorint, length)];
-    
-    //前面提示语句设为红色
-//    [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor greenColor] range:NSMakeRange(startPorint, prelen)];
-    
-//        [self.RXDataDisplayTextView.textStorage addAttribute:NSForegroundColorAttributeName value:[NSColor greenColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
-//        [self.RXDataDisplayTextView.textStorage addAttribute:NSBackgroundColorAttributeName value:[NSColor brownColor] range:NSMakeRange(startPorint+prelen, length-prelen-1)];
     
     [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
     
@@ -433,20 +428,6 @@
 #endif
 }
 
-//-(void)tableViewSelectionDidChange:(NSNotification*)notification{
-//    self.serialPort = [self getCurrentORSSerialPort];
-//    self.serialPort.delegate = self;
-//    self.serialPort.allowsNonStandardBaudRates = YES;//允许非标准的波特率
-//}
-
-//-(ORSSerialPort *)getCurrentORSSerialPort {
-//    if([[self.DeviceArray selectedObjects] count]> 0){
-//        return [[self.DeviceArray selectedObjects] objectAtIndex:0];
-//    } else {
-//        return nil;
-//    }
-//}
-
 
 #pragma mark - Properties
 
@@ -461,6 +442,7 @@
         self.OpenOrClose.title = self.serialPort.isOpen ? @"关闭" : @"打开";
         NSString *tmp=[NSString stringWithFormat:@"%@%@",_serialPort.name,(self.serialPort.isOpen ? @"串口已打开" : @"串口已关闭")];
         self.StatusText.stringValue = tmp;
+//        [_serialPort startListeningForPacketsMatchingDescriptor:<#(nonnull ORSSerialPacketDescriptor *)#>];
     }
 }
 

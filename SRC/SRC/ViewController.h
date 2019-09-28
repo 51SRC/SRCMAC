@@ -30,7 +30,6 @@
 
 @property (weak) IBOutlet NSTextField *TimeInternel;
 @property (weak) IBOutlet NSButton *SendButton;
-@property (weak) IBOutlet NSPopUpButton *SendsButton;
 
 @property (nonatomic, assign) BOOL isRXHexString;
 
@@ -40,7 +39,7 @@
 @property (nonatomic, assign) BOOL isTXGBKString;
 
 @property (nonatomic, strong) ORSSerialPortManager *serialPortManager;
-@property (nonatomic, strong) ORSSerialPort *serialPort;//ORSSerialPort
+@property (nonatomic, strong) ORSSerialPort *serialPort;
 @property (nonatomic, strong) NSArray *availableBaudRates;
 @property (nonatomic, strong) NSMutableArray *serialPortMArr;
 
