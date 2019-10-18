@@ -51,5 +51,7 @@
 
 @property (nonatomic, strong) GTUtils *utils;
 
+@property (nonatomic, assign) BOOL timerFlag;
+
 @end
 

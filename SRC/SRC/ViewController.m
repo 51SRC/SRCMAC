@@ -277,14 +277,6 @@
     self.TXCounter.stringValue=@"0 Bytes";
 }
 
-//- (void)serialPort:(ORSSerialPort *)serialPort didReceivePacket:(NSData *)packetData matchingDescriptor:(ORSSerialPacketDescriptor *)descriptor
-//{
-//    NSString *dataAsString = [[NSString alloc] initWithData:packetData encoding:NSASCIIStringEncoding];
-////    NSString *valueString = [dataAsString substringWithRange:NSMakeRange(4, [dataAsString length]-5)];
-//    NSLog(@"%@",dataAsString);
-//}
-
-
 -(void)textDidChange:(NSNotification *)notification {
     
     [self.TXDataDisplayTextView.textStorage addAttribute:NSFontAttributeName value:[NSFont fontWithName:@"Andale Mono" size:14] range:NSMakeRange(0, [self.TXDataDisplayTextView string].length)];
@@ -299,12 +291,6 @@
     self.OpenOrClose.title = @"关闭";
     self.StatusText.stringValue = @"串口已打开";
     
-//    ORSSerialPacketDescriptor *descriptor = [[ORSSerialPacketDescriptor alloc] initWithPrefixString:@""
-//                                                                                       suffixString:@""
-//                                                                                maximumPacketLength:1024
-//                                                                                           userInfo:nil];
-//    [serialPort startListeningForPacketsMatchingDescriptor:descriptor];
-    
 }
 
 - (void)serialPortWasClosed:(ORSSerialPort *)serialPort
@@ -313,14 +299,45 @@
     self.StatusText.stringValue = @"串口已关闭";
 }
 
+-(void)timerBegin{
+    if (self.timerFlag) {
+        
+        return;
+    }
+     self.timerFlag = true;
+    
+    //__block int timeout=30; //倒计时时间
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    
+    //开始的时间
+    dispatch_time_t startTime = dispatch_walltime(NULL, 1.0 * 0);
+    //间隔的时间 ms
+    uint64_t interval = 5.0 * NSEC_PER_MSEC;
+    
+    dispatch_source_set_timer(_timer,startTime,interval, 0); //每5ms秒执行
+    dispatch_source_set_event_handler(_timer, ^{
+        
+        dispatch_source_cancel(_timer);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //设置界面的按钮显示 根据自己需求设置
+            [self.RXDataDisplayTextView.textStorage.mutableString appendString:@"\n"];
+            self.timerFlag = false;
+        });
+    });
+    //启动定时器
+    dispatch_resume(_timer);
+}
+
 
 - (void)serialPort:(ORSSerialPort *)serialPort didReceiveData:(NSData *)data
 {
     if(serialPort!=self.serialPort){//不是同一个对象，直接返回
         return;
     }
-//    NSLog(@"收到数据: %@",data);
-    self.StatusText.stringValue = @"收到一次数据...";
+    
+    [self timerBegin];
+    
     self.RXNumber += data.length;
     self.RXCounter.stringValue = [NSString stringWithFormat:@"%ld Bytes",self.RXNumber];
     
@@ -352,7 +369,6 @@
     [self.RXDataDisplayTextView scrollRangeToVisible:NSMakeRange(self.RXDataDisplayTextView.string.length, 1)];
     
     [self.RXDataDisplayTextView setNeedsDisplay:YES];
-    self.StatusText.stringValue = @"数据接收完毕";
 }
 
 - (void)serialPortWasRemovedFromSystem:(ORSSerialPort *)serialPort;
