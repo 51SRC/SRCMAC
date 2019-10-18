@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ORSSerialPort.h"
 #import "GTUtils.h"
+#import <AppKit/AppKit.h>
 
 @class ORSSerialPortManager ;
 
@@ -52,6 +53,8 @@
 @property (nonatomic, strong) GTUtils *utils;
 
 @property (nonatomic, assign) BOOL timerFlag;
+
+@property (nonatomic, strong) NSStatusItem *statusItem;
 
 @end
 

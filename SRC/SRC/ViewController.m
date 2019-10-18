@@ -74,6 +74,15 @@
     self.RXNumber = 0;
     // Do any additional setup after loading the view.
     self.TXDataDisplayTextView.delegate = self;
+
+    
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
+    
+    [_statusItem setImage:[NSImage imageNamed:@"icon"]];
+    [_statusItem setToolTip:@"StatusItem"];
+    [_statusItem setHighlightMode:YES];
+  
+    
 }
 
 
