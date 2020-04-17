@@ -322,7 +322,7 @@
     //开始的时间
     dispatch_time_t startTime = dispatch_walltime(NULL, 1.0 * 0);
     //间隔的时间 ms
-    uint64_t interval = 5.0 * NSEC_PER_MSEC;
+    uint64_t interval = 15.0 * NSEC_PER_MSEC;
     
     dispatch_source_set_timer(_timer,startTime,interval, 0); //每5ms秒执行
     dispatch_source_set_event_handler(_timer, ^{
